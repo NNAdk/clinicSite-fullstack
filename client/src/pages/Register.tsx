@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,11 +10,29 @@ const Register: React.FC = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Для примера делаем редирект после "регистрации"
-    navigate('/');
+
+    try {
+      const { data } = await axios.post('http://localhost:5000/api/register', {
+        userName: form.name,
+        email: form.email,
+        password: form.password
+      });
+
+      console.log('Registration successful', data);
+      localStorage.setItem('token', data.token); // сохраняем токен
+      navigate('/'); // редирект на главную
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        alert(err.response?.data?.message || 'Registration failed');
+      } else {
+        alert('Unexpected error');
+      }
+    }
   };
+
+
 
   return (
     <div style={{

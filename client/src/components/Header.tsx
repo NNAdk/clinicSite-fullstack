@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import { AuthContext } from '../context/AuthContext'; // контекст авторизации
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { user, logout } = useContext(AuthContext);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollToTeam = () => {
     if (location.pathname !== '/') {
@@ -18,7 +20,6 @@ const Header: React.FC = () => {
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
 
   return (
     <header style={{
@@ -61,8 +62,6 @@ const Header: React.FC = () => {
             onClick={scrollToTeam}
             onMouseEnter={e => e.currentTarget.style.color = '#0d3b66'}
             onMouseLeave={e => e.currentTarget.style.color = '#555555'}
-            
-
           >
             ABOUT
           </li>
@@ -85,49 +84,98 @@ const Header: React.FC = () => {
         </ul>
       </nav>
 
-      {/* Auth Buttons */}
-      <div style={{ flex: '0 0 auto', display: 'flex', gap: '12px' }}>
-        <button
-          onClick={() => navigate('/login')}
-          style={{
-            padding: '10px 20px',
-            borderRadius: '12px',
-            border: '1px solid #0d3b66',
-            backgroundColor: '#ffffff',
-            color: '#0d3b66',
-            fontWeight: 600,
-            cursor: 'pointer',
-            transition: 'all 0.3s ease'
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.backgroundColor = '#0d3b66';
-            e.currentTarget.style.color = '#ffffff';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.backgroundColor = '#ffffff';
-            e.currentTarget.style.color = '#0d3b66';
-          }}
-        >
-          LOGIN
-        </button>
+      {/* Auth Buttons / User Menu */}
+      <div style={{ flex: '0 0 auto', display: 'flex', gap: '12px', position: 'relative' }}>
+        {!user ? (
+          <>
+            <button
+              onClick={() => navigate('/login')}
+              style={{
+                padding: '10px 20px',
+                borderRadius: '12px',
+                border: '1px solid #0d3b66',
+                backgroundColor: '#ffffff',
+                color: '#0d3b66',
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = '#0d3b66';
+                e.currentTarget.style.color = '#ffffff';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = '#ffffff';
+                e.currentTarget.style.color = '#0d3b66';
+              }}
+            >
+              LOGIN
+            </button>
 
-        <button
-          onClick={() => navigate('/register')}
-          style={{
-            padding: '10px 20px',
-            borderRadius: '12px',
-            border: 'none',
-            backgroundColor: '#0d3b66',
-            color: '#ffffff',
-            fontWeight: 600,
-            cursor: 'pointer',
-            transition: 'all 0.3s ease'
-          }}
-          onMouseEnter={e => e.currentTarget.style.backgroundColor = '#0b2e53'}
-          onMouseLeave={e => e.currentTarget.style.backgroundColor = '#0d3b66'}
-        >
-          REGISTRATION
-        </button>
+            <button
+              onClick={() => navigate('/register')}
+              style={{
+                padding: '10px 20px',
+                borderRadius: '12px',
+                border: 'none',
+                backgroundColor: '#0d3b66',
+                color: '#ffffff',
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#0b2e53'}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#0d3b66'}
+            >
+              REGISTRATION
+            </button>
+          </>
+        ) : (
+          <div>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              style={{
+                padding: '10px 20px',
+                borderRadius: '12px',
+                border: 'none',
+                backgroundColor: '#0d3b66',
+                color: '#fff',
+                fontWeight: 600,
+                cursor: 'pointer'
+              }}
+            >
+              {user.userName} ▼
+            </button>
+
+            {menuOpen && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                right: 0,
+                backgroundColor: '#fff',
+                color: '#000',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                borderRadius: '8px',
+                marginTop: '5px',
+                minWidth: '150px',
+                zIndex: 10
+              }}>
+                <button
+                  style={{ width: '100%', padding: '10px', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer' }}
+                  onClick={() => navigate('/my-records')}
+                >
+                  My Records
+                </button>
+                <button
+                  style={{ width: '100%', padding: '10px', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer' }}
+                  onClick={logout}
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </header>
   );

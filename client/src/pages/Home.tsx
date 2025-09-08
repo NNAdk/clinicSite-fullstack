@@ -68,7 +68,6 @@ const nextSlide = () => {
 
   
 
-  // Генерация декоративных SVG
   const [decorativeSVGs] = React.useState(() => {
     const svgIcons = [SmileIcon, TeethIcon, Teeth2Icon];
     const arr: { src: string, top: string, left: string, width: string, opacity: number, rotate: string }[] = [];
@@ -134,7 +133,7 @@ const nextSlide = () => {
             zIndex: 0
           }} />
         ))}
-        <h1 style={{ fontSize: '52px', fontWeight: 800, marginBottom: '20px', color: '#0d3b66', position: 'relative', zIndex: 1 }}>
+        <h1 style={{ fontSize: '52px', fontWeight: 800, marginBottom: '20px', color: '#5b9454ff', position: 'relative', zIndex: 1 }}>
           Створюємо Стоматологічні Традиції
         </h1>
         <p style={{
@@ -156,7 +155,7 @@ const nextSlide = () => {
           fontWeight: 600,
           borderRadius: '12px',
           border: 'none',
-          backgroundColor: '#0d3b66',
+          backgroundColor: '#5b9454ff',
           color: '#ffffff',
           cursor: 'pointer',
           transition: 'all 0.3s ease',
@@ -164,8 +163,8 @@ const nextSlide = () => {
           position: 'relative',
           zIndex: 1
         }}
-          onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#0b2e53')}
-          onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#0d3b66')}
+          onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#3E6047')}
+          onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#5b9454ff')}
           onClick={() => navigate('/reserve')}
         >
           Записатися на прийом
@@ -177,7 +176,7 @@ const nextSlide = () => {
 
      {/* Команда */}
 <section id="our-team" style={{ position: 'relative', padding: '80px 20px', backgroundColor: '#fff', overflow: 'hidden' }}>
-  <h2 style={{ fontSize: '40px', fontWeight: 700, marginBottom: '60px', color: '#0d3b66', textAlign: 'center' }}>
+  <h2 style={{ fontSize: '52px', fontWeight: 800, marginBottom: '20px', color: '#5b9454ff', textAlign: 'center', zIndex: 1 }}>
     Віддані вашій усмішці
   </h2>
 
@@ -256,14 +255,14 @@ const nextSlide = () => {
         ))}
 
         <div style={{ width: '100%', textAlign: 'center', marginBottom: '40px', position: 'relative', zIndex: 1 }}>
-          <h2 style={{ fontSize: '40px', fontWeight: 700, color: '#0d3b66' }}>Чому Обирають Нас</h2>
+          <h2 style={{ fontSize: '52px', fontWeight: 800, marginBottom: '20px', color: '#5b9454ff', textAlign: 'center', zIndex: 1 }}>Чому Обирають Нас</h2>
         </div>
 
         <div style={{ flex: 1, minWidth: '300px', position: 'relative', zIndex: 1 }}>
           {[
-            { title: "Experienced Professionals", text: "Our team of certified dentists has years of experience in preventive, restorative, and cosmetic dentistry." },
-            { title: "State-of-the-Art Equipment", text: "We use the latest dental technologies to ensure safe, effective, and comfortable treatments." },
-            { title: "Patient-Centered Care", text: "Every patient receives personalized attention and care tailored to their needs." }
+            { title: "Професіоналізм та досвід", text: "Наша команда складається з висококваліфікованих стоматологів, які постійно підвищують свою кваліфікацію та слідкують за сучасними методиками лікування." },
+            { title: "Індивідуальний підхід", text: "Ми уважно слухаємо пацієнтів і підбираємо оптимальні рішення саме для вашого випадку." },
+            { title: "Сучасне обладнання", text: "Використовуємо передові технології та матеріали для точного діагностування та комфортного лікування." }
           ].map((item, i) => (
             <div key={i} style={{
               marginBottom: '32px',

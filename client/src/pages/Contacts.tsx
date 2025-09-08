@@ -27,7 +27,7 @@ const Contacts: React.FC = () => {
         </h2>
 
         <p style={{ fontSize: '16px', color: '#555555', lineHeight: 1.6, marginBottom: '20px' }}>
-          Ми будемо раді почути від вас! Ось як ви можете з нами зв'язатися:
+          Ми будемо раді почути вас! Ось як ви можете з нами зв'язатися:
         </p>
 
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '16px', color: '#555555', lineHeight: 2 }}>

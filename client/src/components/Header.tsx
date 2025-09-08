@@ -99,23 +99,23 @@ const Header: React.FC = () => {
           <>
             <button
               onClick={() => navigate('/login')}
-              style={{
+               style={{
                 padding: '10px 20px',
                 borderRadius: '12px',
-                border: '1px solid #0d3b66',
-                backgroundColor: '#ffffff',
-                color: '#0d3b66',
+                border: '1px solid #4F7A5A', 
+                backgroundColor: '#FFFFFF',  
+                color: '#4F7A5A',           
                 fontWeight: 600,
                 cursor: 'pointer',
                 transition: 'all 0.3s ease'
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.backgroundColor = '#0d3b66';
-                e.currentTarget.style.color = '#ffffff';
+                e.currentTarget.style.backgroundColor = '#4F7A5A'; 
+                e.currentTarget.style.color = '#FFFFFF';          
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.backgroundColor = '#ffffff';
-                e.currentTarget.style.color = '#0d3b66';
+                e.currentTarget.style.backgroundColor = '#FFFFFF'; 
+                e.currentTarget.style.color = '#4F7A5A';           
               }}
             >
               ВХІД
@@ -127,14 +127,14 @@ const Header: React.FC = () => {
                 padding: '10px 20px',
                 borderRadius: '12px',
                 border: 'none',
-                backgroundColor: '#0d3b66',
+                backgroundColor: '#3E6047',
                 color: '#ffffff',
                 fontWeight: 600,
                 cursor: 'pointer',
                 transition: 'all 0.3s ease'
               }}
-              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#0b2e53'}
-              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#0d3b66'}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#5b9454ff'}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#3E6047'}
             >
               РЕЄСТРАЦІЯ
             </button>

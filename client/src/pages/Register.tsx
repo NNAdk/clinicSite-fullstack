@@ -1,11 +1,11 @@
 import axios from 'axios';
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
+  const { login } = useAuth();
   const [form, setForm] = useState({ name: '', email: '', password: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +22,7 @@ const Register: React.FC = () => {
       });
 
       login({ userName: data.userName, email: data.email }, data.token);
-      navigate('/'); // редирект на главную
+      navigate('/'); 
     } catch (err) {
       if (axios.isAxiosError(err)) {
         alert(err.response?.data?.message || 'Registration failed');

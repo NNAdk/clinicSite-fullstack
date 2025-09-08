@@ -1,11 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext'; // контекст авторизации
+import { useAuth } from '../context/AuthContext';
+import etnoDent from '../assets/etnoDent.png';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollToTeam = () => {
@@ -39,9 +40,17 @@ const Header: React.FC = () => {
       boxSizing: 'border-box',
     }}>
       {/* Logo */}
-      <div style={{ flex: '0 0 auto', cursor: 'pointer' }} onClick={() => navigate('/')}>
-        <h1 style={{ fontSize: '24px', fontWeight: 800, margin: 0, color: '#0d3b66' }}>
-          DENTAL CLINIC
+      <div 
+        style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+        onClick={() => navigate('/')}
+      >
+        <img 
+          src={etnoDent}
+          alt="ETNO DENT Logo"
+          style={{ height: '34px', width: '34px', objectFit: 'contain' }}
+        />
+        <h1 style={{ fontSize: '34px', fontWeight: 800, margin: 0, color: '#5b9454ff' }}>
+          ETNO DENT
         </h1>
       </div>
 
@@ -63,7 +72,7 @@ const Header: React.FC = () => {
             onMouseEnter={e => e.currentTarget.style.color = '#0d3b66'}
             onMouseLeave={e => e.currentTarget.style.color = '#555555'}
           >
-            ABOUT
+            О НАС
           </li>
           <li
             style={{ cursor: 'pointer', transition: 'color 0.3s' }}
@@ -71,7 +80,7 @@ const Header: React.FC = () => {
             onMouseEnter={e => e.currentTarget.style.color = '#0d3b66'}
             onMouseLeave={e => e.currentTarget.style.color = '#555555'}
           >
-            RESERVE
+            ЗАПИС
           </li>
           <li
             style={{ cursor: 'pointer', transition: 'color 0.3s' }}
@@ -79,7 +88,7 @@ const Header: React.FC = () => {
             onMouseEnter={e => e.currentTarget.style.color = '#0d3b66'}
             onMouseLeave={e => e.currentTarget.style.color = '#555555'}
           >
-            CONTACTS
+            КОНТАКТИ
           </li>
         </ul>
       </nav>
@@ -109,7 +118,7 @@ const Header: React.FC = () => {
                 e.currentTarget.style.color = '#0d3b66';
               }}
             >
-              LOGIN
+              ВХІД
             </button>
 
             <button
@@ -127,7 +136,7 @@ const Header: React.FC = () => {
               onMouseEnter={e => e.currentTarget.style.backgroundColor = '#0b2e53'}
               onMouseLeave={e => e.currentTarget.style.backgroundColor = '#0d3b66'}
             >
-              REGISTRATION
+              РЕЄСТРАЦІЯ
             </button>
           </>
         ) : (

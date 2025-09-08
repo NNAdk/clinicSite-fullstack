@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
   const [form, setForm] = useState({ name: '', email: '', password: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,7 +14,6 @@ const Register: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
       const { data } = await axios.post('http://localhost:5000/api/register', {
         userName: form.name,
@@ -20,8 +21,7 @@ const Register: React.FC = () => {
         password: form.password
       });
 
-      console.log('Registration successful', data);
-      localStorage.setItem('token', data.token); // сохраняем токен
+      login({ userName: data.userName, email: data.email }, data.token);
       navigate('/'); // редирект на главную
     } catch (err) {
       if (axios.isAxiosError(err)) {
@@ -31,8 +31,6 @@ const Register: React.FC = () => {
       }
     }
   };
-
-
 
   return (
     <div style={{

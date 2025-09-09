@@ -33,7 +33,7 @@ const Home: React.FC = () => {
   const containerWidth = visibleCards * cardWidth + (visibleCards - 1) * gap;
 
   const arrowStyle: React.CSSProperties = {
-  backgroundColor: '#0d3b66',
+  backgroundColor: '#4F7A5A',
   color: '#fff',
   border: 'none',
   borderRadius: '50%',
@@ -49,11 +49,11 @@ const Home: React.FC = () => {
 };
 
 const handleArrowHover = (e: React.MouseEvent<HTMLButtonElement>) => {
-  (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0b2e53';
+  (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#375c22ff';
 };
 
 const handleArrowLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
-  (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#0d3b66';
+  (e.currentTarget as HTMLButtonElement).style.backgroundColor = '#4F7A5A';
 };
 
 
@@ -209,7 +209,7 @@ const nextSlide = () => {
             backgroundColor: '#f9f9f9'
           }}>
             <img src={doc.img} alt={doc.name} style={{ width: '100%', height: 'auto', display: 'block' }} />
-            <h3 style={{ padding: '10px', fontWeight: 700, color: '#0d3b66' }}>{doc.name}</h3>
+            <h3 style={{ padding: '10px', fontWeight: 700, color: '#216e25ff' }}>{doc.name}</h3>
             <p style={{ padding: '0 10px 10px 10px', fontSize: '14px', color: '#555' }}>{doc.desc}</p>
           </div>
         ))}
@@ -275,7 +275,7 @@ const nextSlide = () => {
               onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-8px)')}
               onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}
             >
-              <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '8px', color: '#0d3b66' }}>{item.title}</h3>
+              <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '8px', color: '#216e25ff' }}>{item.title}</h3>
               <p style={{ fontSize: '14px', color: '#555555', lineHeight: 1.6 }}>{item.text}</p>
             </div>
           ))}

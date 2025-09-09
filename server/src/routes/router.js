@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { register } from '../controllers/userController.js'
+import { login, register, reserve } from '../controllers/userController.js'
 
 
 const router = Router ();
 
 router.post('/register', register );
-router.post('/login', (req, res) => res.send("login route"));
-router.post('/reserve', (req, res) => res.send("reserve route"));
+router.post('/login', login);
+router.post('/reserve', reserve);
 
 
 // router.get('/') -------> получить инфу о записях + !!!сделать страницу записей

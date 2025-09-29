@@ -117,10 +117,10 @@ const DoctorsCarousel = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center space-y-4 mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">Meet Our Expert Team</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">Зустрічайте нашу команду експертів</h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Our experienced dental professionals are committed to providing you with 
-            the highest quality care using the latest techniques and technologies.
+            Наші досвідчені стоматологи прагнуть забезпечити вам найвищу якість лікування, 
+            використовуючи найновіші методи та технології.
           </p>
         </div>
 
